@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ahmedelmelegy3570/nginx
   tag: "1.27.2"
   pullPolicy: IfNotPresent
 
