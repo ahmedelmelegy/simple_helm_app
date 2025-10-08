@@ -16,7 +16,7 @@ metadata:
 
     # Write-back configuration (to values.yaml)
     argocd-image-updater.argoproj.io/write-back-method: git
-    argocd-image-updater.argoproj.io/write-back-target: values.yaml
+    argocd-image-updater.argoproj.io/write-back-target: helm-values
     argocd-image-updater.argoproj.io/values-file: values.yaml
     argocd-image-updater.argoproj.io/git-repository: https://github.com/ahmedelmelegy/simple_helm_app
     argocd-image-updater.argoproj.io/git-branch: main
