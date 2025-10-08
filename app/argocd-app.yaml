@@ -33,6 +33,10 @@ spec:
     server: https://kubernetes.default.svc
     namespace: dev            # Argo CD will create this namespace automatically
 
+    helm:
+      valueFiles:
+        - values.yaml
+        
   syncPolicy:
     automated:
       prune: true
