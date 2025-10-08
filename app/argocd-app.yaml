@@ -4,20 +4,14 @@ metadata:
   name: simple-helm-app
   namespace: argocd
   annotations:
-    # Image tracking configuration
     argocd-image-updater.argoproj.io/image-list: ahmedelmelegy3570/nginx:^1
-
-    # Docker Hub credentials
     argocd-image-updater.argoproj.io/pullsecret: argocd/dockerhub-argocd-secret
-
-    # Map Helm values to image repo & tag
     argocd-image-updater.argoproj.io/helm.image-name: image.repository
     argocd-image-updater.argoproj.io/helm.image-tag: image.tag
 
-    # Write-back configuration (to values.yaml)
+    # ✅ Proper git write-back configuration for Helm
     argocd-image-updater.argoproj.io/write-back-method: git
-    argocd-image-updater.argoproj.io/write-back-target: helm-values
-    argocd-image-updater.argoproj.io/values-file: values.yaml
+    argocd-image-updater.argoproj.io/write-back-target: "helmvalues:/values.yaml"
     argocd-image-updater.argoproj.io/git-repository: https://github.com/ahmedelmelegy/simple_helm_app
     argocd-image-updater.argoproj.io/git-branch: main
     argocd-image-updater.argoproj.io/update-strategy: commit
