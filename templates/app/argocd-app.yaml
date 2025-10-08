@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: simple-helm-app
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/ahmedelmelegy/simple_helm_app
+    targetRevision: main      # branch name
+    path: my-nginx-chart      # folder inside the repo containing the chart
+    helm:
+      values: |
+        replicaCount: 1
+        image:
+          repository: nginx
+          tag: "1.27.2"
+          pullPolicy: IfNotPresent
+        containerPort: 80
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev            # Argo CD will create this namespace automatically
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
