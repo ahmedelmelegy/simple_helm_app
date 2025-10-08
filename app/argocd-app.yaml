@@ -4,10 +4,19 @@ metadata:
   name: simple-helm-app
   namespace: argocd
   annotations:
+    # Tell Image Updater which image to track
     argocd-image-updater.argoproj.io/image-list: ahmedelmelegy3570/nginx:^1
+
+    # Authentication for private Docker Hub repo
+    argocd-image-updater.argoproj.io/pullsecret: argocd/dockerhub-argocd-secret
+
+    # Tell Image Updater to modify Helm values (not kustomize)
+    argocd-image-updater.argoproj.io/simple-helm-app.helm.image-tag: image.tag
+    argocd-image-updater.argoproj.io/simple-helm-app.helm.image-name: image.repository
+
+    # How Image Updater writes the updated tag
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/git-branch: main
-    argocd-image-updater.argoproj.io/pullsecret: argocd/dockerhub-argocd-secret
 spec:
   project: default
 
