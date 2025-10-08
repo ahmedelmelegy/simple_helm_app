@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/ahmedelmelegy/simple_helm_app
     targetRevision: main      # branch name
-    path: my-nginx-chart      # folder inside the repo containing the chart
+    path: .    # folder inside the repo containing the chart
     helm:
       values: |
         replicaCount: 1
