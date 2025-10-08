@@ -17,6 +17,10 @@ metadata:
     # How Image Updater writes the updated tag
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/git-branch: main
+
+    argocd-image-updater.argoproj.io/write-back-target: helm-values
+    argocd-image-updater.argoproj.io/update-strategy: commit
+    argocd-image-updater.argoproj.io/git-repository: https://github.com/ahmedelmelegy/simple_helm_app
 spec:
   project: default
 
